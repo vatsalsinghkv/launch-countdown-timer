@@ -170,4 +170,5 @@ flip(counter.secsEl);
 
 ## Acknowledgments
 
-- [Change the color of SVG image via CSS](https://hovancik.net/blog/2020/01/22/change-the-color-of-svg-image-via-css/) - This was lifesaver.
+- [Change the color of SVG image via CSS](https://hovancik.net/blog/2020/01/22/change-the-color-of-svg-image-via-css/)
+- [CSS filter generator to convert from black to target hex color](https://codepen.io/sosuke/pen/Pjoqqp)
