@@ -1,0 +1,279 @@
+:root {
+	--red-soft: rgb(251, 96, 135);
+	--blue-grayish: hsl(237, 18%, 59%);
+
+	--blue-dark: hsl(235, 16%, 14%);
+	--blue-dark-black: hsl(234, 17%, 12%);
+	--blue-dark-desaturated: hsl(236, 21%, 26%);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	user-select: none;
+	outline: none;
+}
+
+html {
+	font-size: 14px;
+}
+
+body {
+	font-family: 'Red Hat Text', sans-serif;
+	height: 100vh;
+	padding: 0 10%;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+
+	background: url('../images/bg-stars.svg') no-repeat,
+		url('../images/pattern-hills.svg') no-repeat 85% bottom, var(--blue-dark);
+
+	background-size: contain, auto;
+
+	color: #fff;
+}
+
+.text-spaced {
+	text-transform: uppercase;
+	letter-spacing: 0.571rem;
+}
+
+.flip {
+	transform: rotateX(180deg);
+	transform-origin: bottom;
+}
+
+/* Header Section */
+
+.main-heading {
+	margin: 8rem auto;
+}
+
+/* Main Section */
+
+.counter-container {
+	display: flex;
+	justify-content: space-between;
+}
+
+.counter-item-container {
+	margin-right: 2em;
+}
+
+.counter-item-container:last-child {
+	margin-right: 0;
+}
+
+.counter-item {
+	position: relative;
+	overflow-x: hidden;
+
+	border-radius: 0.714em; /* 10px */
+	box-shadow: 0 0.714em var(--blue-dark-black);
+}
+
+.counter-item-top {
+	height: 5.214em; /* 73px / 14 (fs) */
+	width: 10.714em; /* 150px / font-size */
+
+	background-color: hsl(236, 21%, 23%);
+	border-top-left-radius: 0.714em;
+	border-top-right-radius: 0.714em;
+
+	overflow-y: hidden;
+
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+}
+
+.counter-item-bottom {
+	height: 5.214em;
+	width: 10.714em;
+
+	background-color: var(--blue-dark-desaturated);
+	border-bottom-left-radius: 0.714em;
+	border-bottom-right-radius: 0.714em;
+
+	overflow-y: hidden;
+}
+
+.counter-text {
+	color: #8385a9;
+	letter-spacing: 0.571em;
+	margin: 2.857em 0;
+	text-align: center;
+}
+
+/* Counter Divider */
+
+.counter-item-bottom::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+
+	transform: translate(-50%, -50%);
+
+	width: 1.071em; /* 15px */
+	height: 0.928em; /* 13px */
+
+	border-radius: 3.571em; /* 50px */
+	background-color: var(--blue-dark-black);
+}
+
+.counter-item-bottom::after {
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 50%;
+
+	transform: translate(50%, -50%);
+
+	width: 1.071em;
+	height: 0.928em;
+
+	border-radius: 3.571em;
+	background-color: var(--blue-dark-black);
+}
+
+/* Time Text */
+
+.time-container {
+	position: relative;
+}
+
+.time {
+	font-size: 6em;
+	color: var(--red-soft);
+}
+
+.time-top {
+	opacity: 0.75;
+
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translate(-50%, 15%);
+}
+
+.time-bottom {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translate(-50%, -50.5%);
+}
+
+/* Footer Section */
+footer {
+	margin: auto 0 2.15rem 0; /* 30px */
+}
+
+.social-icons {
+	display: flex;
+	justify-content: space-between;
+
+	width: 45%;
+	margin: 0 auto 2rem auto; /* 40px */
+}
+
+.social-icons a:hover img {
+	filter: invert(53%) sepia(39%) saturate(3008%) hue-rotate(312deg)
+		brightness(103%) contrast(97%);
+
+	cursor: pointer;
+}
+
+/* Attribute Section */
+
+.attribution {
+	color: #8385a9;
+	font-size: 0.785rem; /* 11px */
+	text-align: center;
+}
+
+.attribution a {
+	color: var(--red-soft);
+}
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 730px) {
+	.counter-container {
+		font-size: 10px;
+	}
+}
+
+@media screen and (max-width: 550px) {
+	html {
+		font-size: 12px;
+	}
+
+	.counter-container {
+		font-size: 8px;
+	}
+}
+
+@media screen and (max-width: 415px) {
+	body {
+		padding: 0 5%;
+	}
+
+	.counter-container {
+		font-size: 7px;
+	}
+}
+
+@media screen and (max-width: 347px) {
+	body {
+		padding: 0 3%;
+	}
+
+	.counter-container {
+		font-size: 6px;
+	}
+}
+
+@media screen and (max-width: 313px) {
+	html {
+		font-size: 10px;
+	}
+
+	.counter-container {
+		font-size: 5px;
+	}
+
+	.social-icons {
+		width: 60%;
+	}
+
+	.social-icons img {
+		width: 20px;
+	}
+}
+
+@media screen and (max-width: 260px) {
+	html {
+		font-size: 8px;
+	}
+
+	.counter-container {
+		font-size: 4px;
+	}
+
+	.social-icons {
+		width: 60%;
+	}
+}
