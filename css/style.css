@@ -48,6 +48,10 @@ h1 {
 	font-size: 1.5rem;
 }
 
+a {
+	-webkit-tap-highlight-color: transparent;
+}
+
 .text-spaced {
 	text-transform: uppercase;
 	letter-spacing: 0.571rem;
@@ -117,7 +121,7 @@ h1 {
 .counter-text {
 	color: #8385a9;
 	letter-spacing: 0.571em;
-	margin: 2.857em 0;
+	margin: 2.6em 0;
 	text-align: center;
 }
 
@@ -245,6 +249,10 @@ footer {
 		padding: 0 3%;
 	}
 
+	.text-spaced {
+		letter-spacing: 0.45rem;
+	}
+
 	.counter-container {
 		font-size: 6px;
 	}
@@ -257,10 +265,6 @@ footer {
 
 	.counter-container {
 		font-size: 5px;
-	}
-
-	.social-icons {
-		width: 60%;
 	}
 
 	.social-icons img {
@@ -277,7 +281,21 @@ footer {
 		font-size: 4px;
 	}
 
-	.social-icons {
-		width: 60%;
+	.social-icons img {
+		width: 15px;
+	}
+}
+
+@media screen and (max-width: 213px) {
+	html {
+		font-size: 7px;
+	}
+
+	.counter-container {
+		font-size: 3.5px;
+	}
+
+	.social-icons img {
+		width: 10px;
 	}
 }
