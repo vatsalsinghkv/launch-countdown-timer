@@ -2,6 +2,7 @@
 
 const $time = $('.time');
 const $counterItemTop = $('.counter-item-top');
+const isMobile = /iPhone|Android/i.test(navigator.userAgent);
 
 let flagHr = true;
 let flagDay = true;
@@ -46,18 +47,20 @@ const updateTime = (
 	$(secsEl).text(secsTime);
 
 	// Animation
-	if (secsTime == 59) flip(counter.minsEl);
-	if (minsTime == 59 && flagHr) {
-		flip(counter.hoursEl);
-		flagHr = false;
-	} else if (minsTime == 58) {
-		flagHr = true;
-	}
-	if (hoursTime == 23 && flagDay) {
-		flip(counter.daysEl);
-		flagDay = false;
-	} else if (hoursTime == 22) {
-		flagDay = true;
+	if (!isMobile) {
+		if (secsTime == 59) flip(counter.minsEl);
+		if (minsTime == 59 && flagHr) {
+			flip(counter.hoursEl);
+			flagHr = false;
+		} else if (minsTime == 58) {
+			flagHr = true;
+		}
+		if (hoursTime == 23 && flagDay) {
+			flip(counter.daysEl);
+			flagDay = false;
+		} else if (hoursTime == 22) {
+			flagDay = true;
+		}
 	}
 };
 
