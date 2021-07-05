@@ -44,6 +44,10 @@ body {
 	color: #fff;
 }
 
+h1 {
+	font-size: 1.5rem;
+}
+
 .text-spaced {
 	text-transform: uppercase;
 	letter-spacing: 0.571rem;
