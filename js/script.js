@@ -82,6 +82,6 @@ const getTime = () => {
 
 getTime();
 setInterval(() => {
-	flip(counter.secsEl);
 	getTime();
+	isMobile || flip(counter.secsEl);
 }, 1000);
