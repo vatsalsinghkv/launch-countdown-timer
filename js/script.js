@@ -68,12 +68,16 @@ const dateFormatter = (num) => (num < 10 ? '0' + num : num);
 
 const getTime = () => {
 	const currentDate = new Date();
-	const targetDate = new Date(2021, 7, 15);
+	const targetDate = new Date(2021, 7, 15, 0, 0, 0);
 
-	const countdownDate = new Date(targetDate - currentDate);
-	
+	const countdownDate = new Date();
+	countdownDate.setDate(targetDate.getDate() - currentDate.getDate());
+	countdownDate.setHours(targetDate.getHours() - currentDate.getHours());
+	countdownDate.setMinutes(targetDate.getMinutes() - currentDate.getMinutes());
+	countdownDate.setSeconds(targetDate.getSeconds() - currentDate.getSeconds());
+
 	let date = countdownDate.getDate();
-	if(countdownDate.getMonth()) {
+	if (countdownDate.getMonth()) {
 		date = countdownDate.getDate() + 31;
 	}
 
