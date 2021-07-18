@@ -77,9 +77,9 @@ const getTime = () => {
 
 	updateTime(elements, {
 		daysTime: `${date}`.padStart(2, '0'),
-		hoursTime: `${countdownDate.getHours()}`.padEnd(2, '0'),
-		minsTime: `${countdownDate.getMinutes()}`.padEnd(2, '0'),
-		secsTime: `${countdownDate.getSeconds()}`.padEnd(2, '0'),
+		hoursTime: `${countdownDate.getHours()}`.padStart(2, '0'),
+		minsTime: `${countdownDate.getMinutes()}`.padStart(2, '0'),
+		secsTime: `${countdownDate.getSeconds()}`.padStart(2, '0'),
 	});
 };
 
