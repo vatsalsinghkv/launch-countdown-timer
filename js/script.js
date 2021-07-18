@@ -14,12 +14,12 @@ const elements = {
 	secsEl: [$time[6], $time[7]],
 };
 
-const counter = {
-	daysEl: $($counterItemTop[0]),
-	hoursEl: $($counterItemTop[1]),
-	minsEl: $($counterItemTop[2]),
-	secsEl: $($counterItemTop[3]),
-};
+const counter = new Map([
+	['daysEl', $($counterItemTop[0])],
+	['hoursEl', $($counterItemTop[1])],
+	['minsEl', $($counterItemTop[2])],
+	['secsEl', $($counterItemTop[3])],
+]);
 
 const flip = function ($el) {
 	const $elClone = $el
@@ -48,15 +48,15 @@ const updateTime = (
 
 	// Animation
 	if (!isMobile) {
-		if (secsTime == 59) flip(counter.minsEl);
+		if (secsTime == 59) flip(counter.get('minsEl'));
 		if (minsTime == 59 && flagHr) {
-			flip(counter.hoursEl);
+			flip(counter.get('hoursEl'));
 			flagHr = false;
 		} else if (minsTime == 58) {
 			flagHr = true;
 		}
 		if (hoursTime == 23 && flagDay) {
-			flip(counter.daysEl);
+			flip(counter.get('daysEl'));
 			flagDay = false;
 		} else if (hoursTime == 22) {
 			flagDay = true;
@@ -64,17 +64,11 @@ const updateTime = (
 	}
 };
 
-const dateFormatter = (num) => (num < 10 ? '0' + num : num);
-
 const getTime = () => {
 	const currentDate = new Date();
 	const targetDate = new Date(2021, 7, 15, 0, 0, 0);
 
-	const countdownDate = new Date();
-	countdownDate.setDate(targetDate.getDate() - currentDate.getDate());
-	countdownDate.setHours(targetDate.getHours() - currentDate.getHours());
-	countdownDate.setMinutes(targetDate.getMinutes() - currentDate.getMinutes());
-	countdownDate.setSeconds(targetDate.getSeconds() - currentDate.getSeconds());
+	const countdownDate = new Date(targetDate - currentDate);
 
 	let date = countdownDate.getDate();
 	if (countdownDate.getMonth()) {
@@ -82,15 +76,15 @@ const getTime = () => {
 	}
 
 	updateTime(elements, {
-		daysTime: dateFormatter(date),
-		hoursTime: dateFormatter(countdownDate.getHours()),
-		minsTime: dateFormatter(countdownDate.getMinutes()),
-		secsTime: dateFormatter(countdownDate.getSeconds()),
+		daysTime: `${date}`.padStart(2, '0'),
+		hoursTime: `${countdownDate.getHours()}`.padEnd(2, '0'),
+		minsTime: `${countdownDate.getMinutes()}`.padEnd(2, '0'),
+		secsTime: `${countdownDate.getSeconds()}`.padEnd(2, '0'),
 	});
 };
 
 getTime();
 setInterval(() => {
 	getTime();
-	isMobile || flip(counter.secsEl);
+	isMobile || flip(counter.get('secsEl'));
 }, 1000);
