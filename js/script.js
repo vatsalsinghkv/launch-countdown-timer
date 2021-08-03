@@ -6,6 +6,7 @@ const isMobile = /iPhone|Android/i.test(navigator.userAgent);
 
 let flagHr = true;
 let flagDay = true;
+let bday = false;
 
 const elements = {
 	daysEl: [$time[0], $time[1]],
@@ -20,6 +21,10 @@ const counter = new Map([
 	['minsEl', $($counterItemTop[2])],
 	['secsEl', $($counterItemTop[3])],
 ]);
+
+const printBday = () => {
+	$('.main-heading').text('Happy Birthday Vatsal! 🎉');
+};
 
 const flip = function ($el) {
 	const $elClone = $el
@@ -41,6 +46,18 @@ const updateTime = (
 	{ daysEl, hoursEl, minsEl, secsEl },
 	{ daysTime, hoursTime, minsTime, secsTime }
 ) => {
+	if ([daysTime, hoursTime, minsTime, secsTime].every(t => t == 0)) {
+		printBday();
+		bday = true;
+
+		$(daysEl).text('00');
+		$(hoursEl).text('00');
+		$(minsEl).text('00');
+		$(secsEl).text('00');
+
+		return;
+	}
+
 	$(daysEl).text(daysTime);
 	$(hoursEl).text(hoursTime);
 	$(minsEl).text(minsTime);
@@ -84,7 +101,11 @@ const getTime = () => {
 };
 
 getTime();
-setInterval(() => {
-	getTime();
-	isMobile || flip(counter.get('secsEl'));
+const timer = setInterval(() => {
+	if (bday) {
+		clearInterval(timer);
+	} else {
+		getTime();
+		isMobile || flip(counter.get('secsEl'));
+	}
 }, 1000);
