@@ -46,10 +46,7 @@ const updateTime = (
 	{ daysEl, hoursEl, minsEl, secsEl },
 	{ daysTime, hoursTime, minsTime, secsTime }
 ) => {
-	if (
-		[daysTime, hoursTime, minsTime].every(t => t == 0) &&
-		(secsTime == 0 || secsTime == 1)
-	) {
+	if ([daysTime, hoursTime, minsTime, secsTime].every(t => t == 0)) {
 		printBday();
 		bday = true;
 
@@ -88,18 +85,29 @@ const getTime = () => {
 	const currentDate = new Date();
 	const targetDate = new Date(2021, 7, 15, 0, 0, 0);
 
-	const countdownDate = new Date(targetDate - currentDate);
+	let timeLeft = targetDate - currentDate; // in miliseconds
 
-	let date = countdownDate.getDate();
-	if (countdownDate.getMonth()) {
-		date = countdownDate.getDate() + 31;
+	let days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+	timeLeft %= 1000 * 60 * 60 * 24;
+
+	let hours = Math.floor(timeLeft / (1000 * 60 * 60));
+	timeLeft %= 1000 * 60 * 60;
+
+	let mins = Math.floor(timeLeft / (1000 * 60));
+	timeLeft %= 1000 * 60;
+
+	let secs = Math.floor(timeLeft / 1000);
+
+	if (days % 30) {
+		let months = days % 30;
+		days += 31 * months;
 	}
 
 	updateTime(elements, {
-		daysTime: `${date}`.padStart(2, '0'),
-		hoursTime: `${countdownDate.getHours()}`.padStart(2, '0'),
-		minsTime: `${countdownDate.getMinutes()}`.padStart(2, '0'),
-		secsTime: `${countdownDate.getSeconds()}`.padStart(2, '0'),
+		daysTime: `${days}`.padStart(2, '0'),
+		hoursTime: `${hours}`.padStart(2, '0'),
+		minsTime: `${mins}`.padStart(2, '0'),
+		secsTime: `${secs}`.padStart(2, '0'),
 	});
 };
 
