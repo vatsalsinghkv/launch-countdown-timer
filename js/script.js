@@ -6,7 +6,7 @@ const isMobile = /iPhone|Android/i.test(navigator.userAgent);
 
 let flagHr = true;
 let flagDay = true;
-let bday = false;
+let bday = true;
 
 const elements = {
 	daysEl: [$time[0], $time[1]],
