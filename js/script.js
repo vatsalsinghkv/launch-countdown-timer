@@ -82,6 +82,7 @@ const updateTime = (
 };
 
 const getTime = () => {
+	if (bday) return;
 	const currentDate = new Date();
 	const targetDate = new Date(2021, 7, 15, 0, 0, 0);
 
