@@ -46,7 +46,7 @@ const updateTime = (
 	{ daysEl, hoursEl, minsEl, secsEl },
 	{ daysTime, hoursTime, minsTime, secsTime }
 ) => {
-	if ([daysTime, hoursTime, minsTime, secsTime].every(t => t == 0)) {
+	if ([daysTime, hoursTime, minsTime, secsTime].every(t => t == 0) || bday) {
 		printBday();
 		bday = true;
 
@@ -82,7 +82,7 @@ const updateTime = (
 };
 
 const getTime = () => {
-	if (bday) return;
+
 	const currentDate = new Date();
 	const targetDate = new Date(2021, 7, 15, 0, 0, 0);
 
