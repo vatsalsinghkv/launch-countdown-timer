@@ -46,7 +46,7 @@ const updateTime = (
 	{ daysEl, hoursEl, minsEl, secsEl },
 	{ daysTime, hoursTime, minsTime, secsTime }
 ) => {
-	if ([daysTime, hoursTime, minsTime, secsTime].every(t => t == 0) || bday) {
+	if ([daysTime, hoursTime, minsTime, secsTime].every(t => t == 0) || bday === true) {
 		printBday();
 		bday = true;
 
